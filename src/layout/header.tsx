@@ -5,8 +5,8 @@ import {Link} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../hooks/app";
 import {openModal} from "../store/slice/modalSlice";
 import Modal from "../components/common/modal";
-import Login from "../components/User/login";
-import Register from "../components/User/register";
+import Login from "../components/user/login";
+import Register from "../components/user/register";
 import Styles from "./Layout.module.css"
 import {auth as fbAuth} from "../firebase/index";
 

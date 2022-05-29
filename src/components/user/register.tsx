@@ -29,7 +29,7 @@ const Register: React.FC = () => {
                         await sendVerificationEmail(auth)
                         dispatch(closeAll('*'))
                         notification.success({
-                            message: 'User  has been created successfully!\n Please check your email to verify your account.',
+                            message: 'user  has been created successfully!\n Please check your email to verify your account.',
                         })
                     }
                 } else {
