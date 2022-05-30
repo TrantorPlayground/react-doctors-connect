@@ -10,8 +10,8 @@ const reportWebVitals = (onPerfEntry?: ReportHandler) => {
       getFCP(onPerfEntry);
       getLCP(onPerfEntry);
       getTTFB(onPerfEntry);
-    }).catch((e) => {
-      // nothing to do
+    }).catch(() => {
+      // Nothing to do as the app works without Web Vitals as well
     });
   }
 };
