@@ -15,7 +15,7 @@ const Home: React.FC = () => {
   const getDoctors = async () => handleAsyncAwait(fs
     .collection('profiles')
     .where('role', '==', 'doctor')
-    .where('isActive', '==', true)
+    // .where('isActive', '==', true)
     .get());
   useEffect(() => {
     getDoctors().then(([response, error]) => {
@@ -40,17 +40,19 @@ const Home: React.FC = () => {
         <Row justify="center">
           <Col span="22">
             <h1>Doctors</h1>
-            {doctors.map((doctor) => (
-              <Col xs={12} lg={4} md={6}>
-                <Card title={doctor.name}>
-                  <Card.Meta
-                    avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                    title="Dentist"
-                    description="Here goes more info"
-                  />
-                </Card>
-              </Col>
-            ))}
+            <Row gutter={16}>
+              {doctors.map((doctor) => (
+                <Col xs={12} lg={6} md={8}>
+                  <Card title={doctor.name}>
+                    <Card.Meta
+                      avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
+                      title="Dentist"
+                      description="Here goes more info"
+                    />
+                  </Card>
+                </Col>
+              ))}
+            </Row>
           </Col>
         </Row>
       </Layout.Content>
