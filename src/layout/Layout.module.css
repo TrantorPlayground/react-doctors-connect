@@ -1,8 +1,9 @@
-.header{
-    background-color: #e3e3e3;
-}
 .unverifiedAccount{
     text-align: center;
     padding: .2rem;
     font-weight: bold;
+}
+
+.alignMenuItems {
+    margin-left: auto;
 }

@@ -16,7 +16,7 @@ const Login: React.FC = () => {
     <Spin spinning={loading}>
       <Form
         labelAlign="left"
-        labelCol={{ xs: 24, lg: 6 }}
+        labelCol={{ xs: 24, lg: 8 }}
         colon={false}
         onFinish={(values) => {
           setLoading(true);
@@ -30,7 +30,7 @@ const Login: React.FC = () => {
         }}
       >
         <Form.Item
-          label="Email/Username"
+          label="Email ID / Username"
           rules={[{
             required: true,
             message: 'Please input your email!',
@@ -53,24 +53,21 @@ const Login: React.FC = () => {
         >
           <Input.Password />
         </Form.Item>
-        <Row justify="end">
-          <Col>
-            <Button disabled={loading} htmlType="submit">Login</Button>
-          </Col>
-        </Row>
+        <Button type="primary" block disabled={loading} htmlType="submit">Login</Button>
+        <br />
+        <br />
         <Row justify="end">
           <Col>
             <Space>
-              <Link
-                to="#"
+              <Button
                 onClick={() => {
                   dispatch(closeAll('*'));
                   dispatch(openModal('register'));
                 }}
               >
                 Register
-              </Link>
-              <Link to="/forgot-password">Forgot Password</Link>
+              </Button>
+              <Link to="/forgot-password">Forgot Password?</Link>
             </Space>
           </Col>
         </Row>

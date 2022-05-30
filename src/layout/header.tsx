@@ -1,8 +1,5 @@
 import React, { useContext } from 'react';
-import {
-  Button, Col, Layout, Row,
-} from 'antd';
-import { Link } from 'react-router-dom';
+import { Layout, Menu } from 'antd';
 import { AuthContext } from '../context/AuthContext';
 import { useAppDispatch, useAppSelector } from '../hooks/app';
 import { openModal } from '../store/slice/modalSlice';
@@ -25,50 +22,39 @@ const Header = () => {
           use all services
         </div>
         )}
-      <Layout.Header className={Styles.header}>
-        <Row justify="space-between">
-          <Row>
-            <Col>
-              Docon
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              {auth?.email && profile.name !== '' && (
-              <ul>
-                <li>
-                  Welcome
-                  {profile?.name}
-                </li>
-                <li>
-                  <Button
-                    type="link"
-                    onClick={() => {
-                      signOut().then(() => {
-                        // nothing to do
-                      }).catch((e) => {
-                        // nothing to do
-                      });
-                    }}
-                  >
-                    Logout
-                  </Button>
-                </li>
-              </ul>
-              )}
-              {!auth?.email && (
-              <Button
-                type="link"
-                onClick={() => {
-                  dispatch(openModal('login'));
-                }}
-              >
-                Login
-              </Button>
-              )}
-            </Col>
-          </Row>
-        </Row>
+      <Layout.Header>
+        <Menu theme="dark" mode="horizontal">
+          <Menu.Item disabled>Docon</Menu.Item>
+          {auth?.email && profile.name !== '' && (
+          <>
+            <Menu.Item className={Styles.alignMenuItems}>
+              <span>Welcome </span>
+              <span>{ profile?.name }</span>
+            </Menu.Item>
+            <Menu.Item
+              onClick={() => {
+                signOut().then(() => {
+                  // nothing to do
+                }).catch(() => {
+                  // nothing to do
+                });
+              }}
+            >
+              Logout
+            </Menu.Item>
+          </>
+          )}
+          {!auth?.email && (
+          <Menu.Item
+            className={Styles.alignMenuItems}
+            onClick={() => {
+              dispatch(openModal('login'));
+            }}
+          >
+            Login
+          </Menu.Item>
+          )}
+        </Menu>
       </Layout.Header>
       <Modal modalKey="login" title="Login to Docon">
         <Login />
