@@ -1,8 +1,7 @@
 import React, {ReactNode, useEffect, useState} from "react";
 import firebase from "firebase/app";
 import {AuthContext} from "../context/AuthContext";
-import {auth, fs} from "../firebase/index"
-import {notification} from "antd";
+import {auth, fs} from '../firebase'
 import {handleAsyncAwait} from "../helpers/app";
 import {useAppDispatch} from "../hooks/app";
 import {onProfileGet} from "../store/slice/profileSlice";

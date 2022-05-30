@@ -1,4 +1,4 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {createSlice} from "@reduxjs/toolkit";
 import {iProfile} from "../../interfaces/global";
 const initialState:iProfile = {
     email: "",

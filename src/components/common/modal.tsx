@@ -1,5 +1,5 @@
 import React from 'react';
-import {Modal as AntDModal, Button} from 'antd';
+import {Modal as AntDModal} from 'antd';
 import {useAppDispatch, useAppSelector} from "../../hooks/app";
 import {closeModal} from "../../store/slice/modalSlice";
 
