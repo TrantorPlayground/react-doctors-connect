@@ -61,16 +61,23 @@ const Login: React.FC = () => {
         <Row justify="end">
           <Col>
             <Space>
-              <Link
-                to="#"
+              <Button
+                type="link"
                 onClick={() => {
                   dispatch(closeAll('*'));
                   dispatch(openModal('register'));
                 }}
               >
                 Register
-              </Link>
-              <Link to="/forgot-password">Forgot Password</Link>
+              </Button>
+              <Button
+                type="link"
+                onClick={() => {
+                  // TODO
+                }}
+              >
+                Forgot Password
+              </Button>
             </Space>
           </Col>
         </Row>

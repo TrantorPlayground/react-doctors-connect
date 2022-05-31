@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import {
-  Button, Col, Layout, Row,
+  Button, Col, Dropdown, Layout, Menu, Row,
 } from 'antd';
-import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { useAppDispatch, useAppSelector } from '../hooks/app';
 import { openModal } from '../store/slice/modalSlice';
@@ -18,56 +17,64 @@ const Header = () => {
   const dispatch = useAppDispatch();
   return (
     <>
-      {!auth?.emailVerified
+      {auth && !auth?.emailVerified
         && (
-        <div className={Styles.unverifiedAccount}>
-          Please verify your email address to
-          use all services
-        </div>
+          <div className={Styles.unverifiedAccount}>
+            Please verify your email address to
+            use all services
+          </div>
         )}
       <Layout.Header className={Styles.header}>
-        <Row justify="space-between">
-          <Row>
-            <Col>
-              Docon
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              {auth?.email && profile.name !== '' && (
-              <ul>
-                <li>
-                  Welcome
-                  {profile?.name}
-                </li>
-                <li>
+        <Row justify="center">
+          <Col span="22">
+            <Row justify="space-between">
+              <Col>
+                Docon
+              </Col>
+              <Col>
+                {auth?.email && profile.name !== '' && (
+                  <Dropdown overlay={(
+                    <Menu>
+                      <Menu.Item>
+                        <Button
+                          type="link"
+                          onClick={() => {
+                            signOut().then(() => {
+                              // nothing to do
+                            }).catch(() => {
+                              // nothing to do
+                            });
+                          }}
+                        >
+                          Logout
+                        </Button>
+                      </Menu.Item>
+                    </Menu>
+                  )}
+                  >
+                    <Button type="link">
+                      Welcome
+                      {' '}
+                      {' '}
+                      {profile.name}
+                    </Button>
+                  </Dropdown>
+                )}
+                {!auth?.email && (
                   <Button
                     type="link"
                     onClick={() => {
-                      signOut().then(() => {
-                        // nothing to do
-                      }).catch((e) => {
-                        // nothing to do
-                      });
+                      dispatch(openModal('login'));
                     }}
                   >
-                    Logout
+                    Login
                   </Button>
-                </li>
-              </ul>
-              )}
-              {!auth?.email && (
-              <Button
-                type="link"
-                onClick={() => {
-                  dispatch(openModal('login'));
-                }}
-              >
-                Login
-              </Button>
-              )}
-            </Col>
-          </Row>
+                )}
+              </Col>
+
+            </Row>
+
+          </Col>
         </Row>
       </Layout.Header>
       <Modal modalKey="login" title="Login to Docon">

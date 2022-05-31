@@ -4,10 +4,18 @@ const searchSlice = createSlice({
   name: 'search',
   initialState: {},
   reducers: {
-    onSearch: (state, action) => {},
-    onSearchSuccess: (state, action) => {},
-    onSearchError: (state, action) => {},
-    resetSearch: (state, action) => {},
+    onSearch: (state, action) => {
+      // TODO
+    },
+    onSearchSuccess: (state, action) => {
+      // TODO
+    },
+    onSearchError: (state, action) => {
+      // TODO
+    },
+    resetSearch: (state, action) => {
+      // TODO
+    },
   },
 });
 export const {

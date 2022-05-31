@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   Button, Col, Form, Input, notification, Row, Select, Space, Spin,
 } from 'antd';
@@ -11,10 +11,15 @@ import { closeAll, openModal } from '../../store/slice/modalSlice';
 const Register: React.FC = () => {
   const [loading, setLoading] = React.useState(false);
   const dispatch = useAppDispatch();
-
+  const [form] = Form.useForm();
+  useEffect(() => {
+    console.log(form.getFieldValue('role'));
+    // todo
+  }, [form.getFieldValue('role')]);
   return (
     <Spin spinning={loading}>
       <Form
+        form={form}
         labelAlign="left"
         labelCol={{ xs: 24, lg: 6 }}
         colon={false}
@@ -56,7 +61,10 @@ const Register: React.FC = () => {
           <Input />
         </Form.Item>
         <Form.Item label="Register as" name="role">
-          <Select>
+          <Select onChange={(value) => {
+            console.log(value);
+          }}
+          >
             <Select.Option value="patient">Patient</Select.Option>
             <Select.Option value="doctor">Doctor</Select.Option>
           </Select>

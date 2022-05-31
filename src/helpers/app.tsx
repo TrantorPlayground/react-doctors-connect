@@ -1,8 +1,8 @@
 import { notification } from 'antd';
 import { ErrorCodes, iSignUp } from '../interfaces/global';
-import { auth } from '../firebase';
+import { auth as fbAuth, fs } from '../firebase';
 
-export const toast = ({ code, errors }: ErrorCodes) => {
+export const toast = ({ code }: ErrorCodes) => {
   switch (code) {
     case 'auth/user-not-found':
       return notification.error({
@@ -12,26 +12,11 @@ export const toast = ({ code, errors }: ErrorCodes) => {
       return notification.error({
         message: 'Email already in use',
       });
+    default:
+      return notification.error({
+        message: 'Something went wrong!',
+      });
   }
-};
-export const signUp = async (values: iSignUp) => {
-  const [response, error] = await handleAsyncAwait(auth.createUserWithEmailAndPassword(values.email, values.password));
-  return { response, error };
-};
-export const sendVerificationEmail = async (auth:any) => {
-  const [response, error] = await handleAsyncAwait(auth.currentUser.sendEmailVerification());
-  return { response, error };
-};
-export const sendPasswordResetEmail = async (email: string) => {
-  const [response, error] = await handleAsyncAwait(auth.sendPasswordResetEmail(email));
-  return { response, error };
-};
-export const signIn = async (values: iSignUp) => {
-  const [response, error] = await handleAsyncAwait(auth.signInWithEmailAndPassword(values.email, values.password));
-  return { response, error };
-};
-export const signOut = async () => {
-  await auth.signOut();
 };
 export const handleAsyncAwait = async (promise: Promise<any>) => {
   try {
@@ -40,4 +25,38 @@ export const handleAsyncAwait = async (promise: Promise<any>) => {
   } catch (error) {
     return [null, error];
   }
+};
+
+export const signUp = async (values: iSignUp) => {
+  const [response, error] = await handleAsyncAwait(fbAuth
+    .createUserWithEmailAndPassword(values.email, values.password));
+  return { response, error };
+};
+export const sendVerificationEmail = async (auth: any) => {
+  const [response, error] = await handleAsyncAwait(auth
+    .currentUser.sendEmailVerification());
+  return { response, error };
+};
+export const sendPasswordResetEmail = async (email: string) => {
+  const [response, error] = await handleAsyncAwait(fbAuth
+    .sendPasswordResetEmail(email));
+  return { response, error };
+};
+export const signIn = async (values: iSignUp) => {
+  const [response, error] = await handleAsyncAwait(fbAuth
+    .signInWithEmailAndPassword(values.email, values.password));
+  return { response, error };
+};
+export const signOut = async () => {
+  await fbAuth.signOut();
+};
+export const checkDoctorAvailability = async (doctorId: string, dtFrom: number, dtTo: number) => {
+  const [response, error] = await handleAsyncAwait(fs.collection('appointments')
+    .where('doctorId', '==', doctorId)
+    .where('time', '>=', dtFrom)
+    .where('time', '<=', dtTo)
+    .orderBy('time', 'asc')
+    .get());
+  console.log({ response, error });
+  return { response, error };
 };

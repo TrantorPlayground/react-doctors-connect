@@ -5,15 +5,29 @@ const userSlice = createSlice({
   initialState: {},
   reducers: {
     onLogin: (state, action) => {
-
+      // TODO
     },
-    onLoginSuccess: (state, action) => {},
-    onLoginError: (state, action) => {},
-    onLogout: (state, action) => {},
-    onLogoutSuccess: (state, action) => {},
-    onRegister: (state, action) => {},
-    onRegisterSuccess: (state, action) => {},
-    onRegisterError: (state, action) => {},
+    onLoginSuccess: (state, action) => {
+      // TODO
+    },
+    onLoginError: (state, action) => {
+      // TODO
+    },
+    onLogout: (state, action) => {
+      // TODO
+    },
+    onLogoutSuccess: (state, action) => {
+      // TODO
+    },
+    onRegister: (state, action) => {
+      // TODO
+    },
+    onRegisterSuccess: (state, action) => {
+      // TODO
+    },
+    onRegisterError: (state, action) => {
+      // TODO
+    },
   },
 });
 export const {

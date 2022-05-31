@@ -5,12 +5,20 @@ const messageSlice = createSlice({
   initialState: {},
   reducers: {
     onMessageTyping: (state, action) => {
-
+      // TODO
     },
-    onMessageTypingEnd: (state, action) => {},
-    onMessageSend: (state, action) => {},
-    onMessageReceive: (state, action) => {},
-    onChatClose: (state, action) => {},
+    onMessageTypingEnd: (state, action) => {
+      // TODO
+    },
+    onMessageSend: (state, action) => {
+      // TODO
+    },
+    onMessageReceive: (state, action) => {
+      // TODO
+    },
+    onChatClose: (state, action) => {
+      // TODO
+    },
   },
 });
 export const {

@@ -1,41 +1,54 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { iProfile } from '../../interfaces/global';
 
-const initialState:iProfile = {
+const initialState: iProfile = {
   email: '',
   name: '',
   phone: '',
   role: '',
+  id: '',
 };
 const ProfileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
     onProfileCreate: (state, action) => {
+      // todo
     },
     onProfileCreateSuccess: (state, action) => {
+      // todo
     },
     onProfileCreateError: (state, action) => {
+      // todo
     },
     onProfileUpdate: (state, action) => {
+      // todo
     },
     onProfileUpdateSuccess: (state, action) => {
+      // todo
     },
     onProfileUpdateError: (state, action) => {
+      // todo
     },
     onProfileDelete: (state, action) => {
+      // todo
     },
     onProfileDeleteSuccess: (state, action) => {
+      // todo
     },
     onProfileDeleteError: (state, action) => {
+      // todo
     },
     onProfileGet: (state, action) => {
+      // todo
       state = action.payload;
       return state;
     },
     onProfileGetSuccess: (state, action) => {
+      // todo
     },
     onProfileGetError: (state, action) => {
+      // todo
     },
   },
 });
