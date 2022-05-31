@@ -4,8 +4,8 @@ import { Form, Input } from 'antd';
 const SearchBar:React.FC = () => (
   <Form>
     <Input.Group />
-    <Form.Item>
-      <Input.Search />
+    <Form.Item style={{ marginTop: 20 }}>
+      <Input.Search size="large" />
     </Form.Item>
   </Form>
 );
