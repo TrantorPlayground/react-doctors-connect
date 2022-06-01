@@ -23,3 +23,15 @@ export interface iProfile {
   address?: string;
   role: string;
 }
+
+export interface iAppointment {
+  id: string;
+  time: string;
+  doctor: iProfile;
+  patient: iProfile;
+  doctorId: string;
+  patientId: string;
+  patientStatus: boolean;
+  doctorStatus: boolean;
+  updates: [string];
+}

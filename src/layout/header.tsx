@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import {
   Button, Col, Dropdown, Layout, Menu, Row,
 } from 'antd';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import { useAppDispatch, useAppSelector } from '../hooks/app';
 import { openModal } from '../store/slice/modalSlice';
@@ -35,7 +36,10 @@ const Header = () => {
                 {auth?.email && profile.name !== '' && (
                   <Dropdown overlay={(
                     <Menu>
-                      <Menu.Item>
+                      <Menu.Item key="appointments">
+                        <Link to="/appointments">Appointments</Link>
+                      </Menu.Item>
+                      <Menu.Item key="logout">
                         <Button
                           type="link"
                           onClick={() => {
