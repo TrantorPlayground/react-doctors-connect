@@ -23,7 +23,6 @@ const Appointments: React.FC = () => {
     if (error) return toast(error);
     const temp: any[] = [];
     response.docs.forEach((doc: any) => {
-      console.log(doc.data());
       temp.push({
         ...doc.data(),
         id: doc.id,
@@ -51,6 +50,8 @@ const Appointments: React.FC = () => {
         appointments.length > 0
         && appointments.map((appointment) => <AppointmentItem appointment={appointment} />)
       }
+      <h2>Appointments</h2>
+      <p>List coming soon</p>
     </Spin>
   );
 };
