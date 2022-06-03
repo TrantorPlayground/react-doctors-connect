@@ -1,8 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { iProfile } from '../../interfaces/global';
 
 const searchSlice = createSlice({
   name: 'search',
-  initialState: {},
+  initialState: {
+    search: '',
+    doctors: [],
+  },
   reducers: {
     onSearch: (state, action) => {
       // TODO

@@ -4,6 +4,7 @@ import search from './slice/searchSlice';
 import messages from './slice/messageSlice';
 import user from './slice/userSlice';
 import modal from './slice/modalSlice';
+import appointment from './slice/appointmentSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     messages,
     user,
     modal,
+    appointment,
   },
 });
 export type RootState = ReturnType<typeof store.getState>;

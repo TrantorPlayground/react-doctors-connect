@@ -7,6 +7,9 @@ const initialState: iProfile = {
   phone: '',
   role: '',
   id: '',
+  bio: '',
+  consultationCharges: 0,
+  specialities: [],
 };
 const ProfileSlice = createSlice({
   name: 'profile',
@@ -50,6 +53,10 @@ const ProfileSlice = createSlice({
     onProfileGetError: (state, action) => {
       // todo
     },
+    onLogout: (state, action) => {
+      state = initialState;
+      return state;
+    },
   },
 });
 export const {
@@ -65,5 +72,6 @@ export const {
   onProfileGet,
   onProfileGetSuccess,
   onProfileGetError,
+  onLogout,
 } = ProfileSlice.actions;
 export default ProfileSlice.reducer;

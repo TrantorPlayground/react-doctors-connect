@@ -16,6 +16,7 @@ const PatientHome: React.FC = () => {
     getDoctors().then(([response, error]) => {
       const docs: iProfile[] = [];
       response.docs.forEach((doc: any) => {
+        console.log(doc.id);
         docs.push({ ...doc.data(), id: doc.id });
       });
       setDoctors([...docs]);
@@ -24,14 +25,12 @@ const PatientHome: React.FC = () => {
     });
   }, []);
   return (
-    <Row justify="center">
-      <Col span="22">
-        <h1>Doctors</h1>
-        <Row gutter={16}>
-          <DoctorsList doctors={doctors} />
-        </Row>
-      </Col>
-    </Row>
+    <>
+      <h1>Doctors</h1>
+      <Row gutter={16}>
+        <DoctorsList doctors={doctors} />
+      </Row>
+    </>
   );
 };
 

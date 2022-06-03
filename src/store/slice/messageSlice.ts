@@ -2,7 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const messageSlice = createSlice({
   name: 'message',
-  initialState: {},
+  initialState: {
+    chatWindow: {
+      uid: null,
+      receiver: null,
+    },
+  },
   reducers: {
     onMessageTyping: (state, action) => {
       // TODO
@@ -19,6 +24,10 @@ const messageSlice = createSlice({
     onChatClose: (state, action) => {
       // TODO
     },
+    onChatOpen: (state, action) => {
+      state.chatWindow.uid = action.payload.uid;
+      state.chatWindow.receiver = action.payload.receiver;
+    },
   },
 });
 export const {
@@ -27,5 +36,6 @@ export const {
   onMessageSend,
   onMessageReceive,
   onChatClose,
+  onChatOpen,
 } = messageSlice.actions;
 export default messageSlice.reducer;

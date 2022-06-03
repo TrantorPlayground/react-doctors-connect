@@ -4,6 +4,7 @@ import Header from '../../layout/header';
 import SearchBar from '../search/searchBar';
 import { useAppSelector } from '../../hooks/app';
 import PatientHome from './patientHome';
+import DoctorHome from './doctorHome';
 
 const Home: React.FC = () => {
   const { profile } = useAppSelector((state) => state);
@@ -15,6 +16,7 @@ const Home: React.FC = () => {
         </Col>
       </Row>
       {profile.role !== 'doctor' && <PatientHome />}
+      {profile.role === 'doctor' && <DoctorHome />}
     </>
   );
 };

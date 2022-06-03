@@ -22,13 +22,16 @@ export interface iProfile {
   phone?: string;
   address?: string;
   role: string;
+  consultationCharges: number;
+  bio: string;
+  specialities: string[];
 }
 
 export interface iAppointment {
   id: string;
   time: string;
-  doctor: iProfile;
-  patient: iProfile;
+  doctor: any;
+  patient: any;
   doctorId: string;
   patientId: string;
   patientStatus: boolean;
